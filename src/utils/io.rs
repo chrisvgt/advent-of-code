@@ -1,4 +1,4 @@
-use std::fs::read_to_string;
+use std::fs::*;
 
 #[allow(unused)]
 pub fn read_lines(filename: &str) -> Vec<String> {
@@ -7,4 +7,9 @@ pub fn read_lines(filename: &str) -> Vec<String> {
         .lines() // split the string into an iterator of string slices
         .map(String::from) // make each slice into a string
         .collect() // gather them together into a vector
+}
+
+#[allow(unused)]
+pub fn read_string(filename: &str) -> String {
+    read_to_string(filename).unwrap()
 }
