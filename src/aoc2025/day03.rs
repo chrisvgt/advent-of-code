@@ -1,6 +1,5 @@
 use std::string::*;
 
-#[allow(unused)]
 pub fn part1(input: &Vec<String>) -> u64 {
     let mut ret: u64 = 0;
     for item in input {
