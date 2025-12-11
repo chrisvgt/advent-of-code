@@ -1,6 +1,8 @@
 use array2d::Array2D;
 use std::string::*;
 
+use super::super::utils::dbg::*;
+
 fn is_accessible(array2d: &Array2D<char>, row: usize, column: usize) -> bool {
     let mut count = 0;
 
@@ -67,15 +69,15 @@ pub fn part1(input: &[String]) -> u64 {
             if array2d.get(j, i) == Some(&'@') {
                 if is_accessible(&array2d, j, i) {
                     count += 1;
-                    // print!("X")
+                    dbgprint!("X");
                 } else {
-                    // print!("@")
+                    dbgprint!("@");
                 }
             } else {
-                // print!(".")
+                dbgprint!(".");
             }
         }
-        // println!()
+        dbgprintln!();
     }
     count
 }
