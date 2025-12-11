@@ -82,9 +82,45 @@ pub fn part1(input: &[String]) -> u64 {
     count
 }
 
-#[allow(unused)]
 pub fn part2(input: &[String]) -> u64 {
-    0
+    let rows = input.len();
+    let columns = input[0].len();
+
+    if rows != columns {
+        return 0;
+    }
+
+    let data: Vec<char> = input.iter().flat_map(|s| s.chars()).collect();
+
+    let mut array2d =
+        Array2D::from_column_major(&data, rows, columns).expect("failed to create array2D");
+
+    let mut sum = 0;
+    let mut count = 1;
+
+    while count > 0 {
+        count = 0;
+        for i in 0..columns {
+            for j in 0..rows {
+                if array2d.get(j, i) == Some(&'@') {
+                    if is_accessible(&array2d, j, i) {
+                        let _ = array2d.set(j, i, 'X');
+                        count += 1;
+                        dbgprint!("X");
+                    } else {
+                        dbgprint!("@");
+                    }
+                } else {
+                    dbgprint!(".");
+                }
+            }
+            dbgprintln!();
+        }
+        dbgprintln!();
+        dbgprintln!();
+        sum += count;
+    }
+    sum
 }
 
 #[allow(unused)]
