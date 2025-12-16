@@ -8,19 +8,31 @@ pub fn part1(input: &Vec<String>) -> u64 {
             .map(|c| c.to_digit(10).unwrap() as u8)
             .collect::<Vec<_>>();
 
-        let max = digits[..digits.len() - 1].iter().max().unwrap();
-        let pos_max = digits[..digits.len() - 1]
+        let max = digits
+            .get(..digits.len() - 1)
+            .unwrap()
+            .iter()
+            .max()
+            .unwrap();
+        let pos_max = digits
+            .get(..digits.len() - 1)
+            .unwrap()
             .iter()
             .position(|x| x == max)
             .unwrap();
-        let next_max = digits[pos_max + 1..digits.len()].iter().max().unwrap();
+        let next_max = digits
+            .get(pos_max + 1..digits.len())
+            .unwrap()
+            .iter()
+            .max()
+            .unwrap();
         ret += (*max as u64 * 10) + *next_max as u64;
     }
     ret
 }
 
 #[allow(unused)]
-pub fn part2(input: &Vec<String>) -> u64 {
+pub fn part2(input: &[String]) -> u64 {
     0
 }
 

@@ -24,8 +24,8 @@ pub fn part1(input: &str) -> u64 {
 
     for item in v {
         let range: Vec<&str> = item.split_terminator('-').collect();
-        let start = range[0].parse::<u64>().unwrap();
-        let end = range[1].parse::<u64>().unwrap();
+        let start = range.first().unwrap().parse::<u64>().unwrap();
+        let end = range.get(1).unwrap().parse::<u64>().unwrap();
 
         ret += (start..=end)
             .map(|i| check1(&i.to_string()[..]))
@@ -52,8 +52,8 @@ pub fn part2(input: &str) -> u64 {
 
     for item in v {
         let range: Vec<&str> = item.split_terminator('-').collect();
-        let start = range[0].parse::<u64>().unwrap();
-        let end = range[1].parse::<u64>().unwrap();
+        let start = range.first().unwrap().parse::<u64>().unwrap();
+        let end = range.get(1).unwrap().parse::<u64>().unwrap();
 
         ret += (start..=end)
             .map(|i| check2(&i.to_string()[..]))

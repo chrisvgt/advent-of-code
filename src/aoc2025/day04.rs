@@ -51,7 +51,7 @@ fn is_accessible(array2d: &Array2D<char>, row: usize, column: usize) -> bool {
 
 pub fn part1(input: &[String]) -> u64 {
     let rows = input.len();
-    let columns = input[0].len();
+    let columns = input.first().unwrap().len();
 
     if rows != columns {
         return 0;
@@ -84,7 +84,7 @@ pub fn part1(input: &[String]) -> u64 {
 
 pub fn part2(input: &[String]) -> u64 {
     let rows = input.len();
-    let columns = input[0].len();
+    let columns = input.first().unwrap().len();
 
     if rows != columns {
         return 0;
